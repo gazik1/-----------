@@ -29,7 +29,7 @@ function createNumberBox() {
   return { number: number, operation: operation };
 }
 
-function calculat(str = "20+85") {
+function calculat(str) {
   let operation = ["+", "-", "÷", "×"];
 
   if (operation.includes(str[str.length - 1]))
@@ -40,16 +40,14 @@ function calculat(str = "20+85") {
       .split("+")
       .map(v => Number(v))
       .reduce((v1, v2) => +v1 + v2)
-      .toFixed(0)
-      .toString();
+     
   }
   if (str.includes("-")) {
     return str
       .split("-")
       .map(v => Number(v))
       .reduce((v1, v2) => +v1 - +v2)
-      .toFixed(0)
-      .toString();
+     
   }
   if (str.includes("÷")) {
     if (str.split("÷")[0] == "0" || str.split("÷")[1] == "0") return "";
@@ -57,20 +55,23 @@ function calculat(str = "20+85") {
       .split("÷")
       .map(v => Number(v))
       .reduce((v1, v2) => +v1 / +v2)
-      .toFixed(0)
-      .toString();
+    
   }
   if (str.includes("×")) {
     return str
       .split("×")
       .map(v => Number(v))
       .reduce((v1, v2) => +v1 * +v2)
-      .toFixed(0)
-      .toString();
+     
   }
 
   throw Error("Проблема с входными данными");
 }
+
+function maxFixed(number){
+ return Math.floor(number*1000)/1000
+}
+
 
 function addListner(obj) {
   let input = document.getElementById("calculatorBox-input");
@@ -87,7 +88,7 @@ function addListner(obj) {
   let equally = operation[operation.length - 1];
 
   equally.addEventListener("click", event => {
-    input.value = calculat(input.value);
+    input.value =maxFixed( calculat(input.value));
   });
 
   deletion.addEventListener("click", event => {
@@ -100,7 +101,7 @@ function addListner(obj) {
 
       operation.forEach(v => {
         if (input.value.includes(v)) {
-          input.value = calculat(input.value);
+          input.value = maxFixed(calculat(input.value));
         }
       });
 
