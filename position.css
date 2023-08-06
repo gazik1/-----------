@@ -1,0 +1,32 @@
+
+.calculatorBox{
+    max-width: 600px;
+    margin: 0 auto;
+    height: 600px;
+    background-color: aliceblue;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: max-content;
+    column-gap: 5px;
+    row-gap: 5px;
+
+}
+.calculatorBox-input-box{
+    display: flex;
+    grid-column:2 span;
+}
+.calculatorBox-number{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5px;
+    row-gap: 5px;
+    background-color: aliceblue;
+}
+
+.calculatorBox-operation{
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 5px;
+    row-gap: 5px;
+    background-color: aliceblue; 
+}
